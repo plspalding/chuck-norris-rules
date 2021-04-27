@@ -3,31 +3,32 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		5AA55F88263433E4003EB652 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA55F87263433E4003EB652 /* HomeView.swift */; };
 		5AA55F90263434BC003EB652 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA55F8F263434BC003EB652 /* FavoritesView.swift */; };
-		5AA55F96263446DF003EB652 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 5AA55F95263446DF003EB652 /* ComposableArchitecture */; };
 		5AA55FA12635893B003EB652 /* Joke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA55FA02635893B003EB652 /* Joke.swift */; };
 		5AA55FB026358CCA003EB652 /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA55FAF26358CCA003EB652 /* AppAction.swift */; };
-		5AA55FBE26358DCA003EB652 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA55FBD26358DCA003EB652 /* AppStore.swift */; };
+		5AA55FBE26358DCA003EB652 /* AppState+Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA55FBD26358DCA003EB652 /* AppState+Store.swift */; };
 		5AA55FC62635AA6E003EB652 /* RequestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA55FC52635AA6E003EB652 /* RequestState.swift */; };
 		5AA55FCB2635B0A3003EB652 /* StoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA55FCA2635B0A3003EB652 /* StoreTests.swift */; };
+		5ABE51D72638025900FE7401 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABE51D62638025900FE7401 /* Color.swift */; };
+		5ABE51DD2638028B00FE7401 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABE51DC2638028B00FE7401 /* Env.swift */; };
+		5ABE51E62638033200FE7401 /* JokeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABE51E42638033200FE7401 /* JokeCell.swift */; };
+		5ABE51E72638033200FE7401 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABE51E52638033200FE7401 /* ErrorView.swift */; };
+		5ABE51EC2638035C00FE7401 /* QuoteReplacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABE51EB2638035C00FE7401 /* QuoteReplacement.swift */; };
 		5ADFF3A0263293D1007F21D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFF39F263293D1007F21D3 /* AppDelegate.swift */; };
 		5ADFF3A2263293D1007F21D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFF3A1263293D1007F21D3 /* SceneDelegate.swift */; };
 		5ADFF3A4263293D1007F21D3 /* JokesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFF3A3263293D1007F21D3 /* JokesView.swift */; };
 		5ADFF3A6263293D2007F21D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5ADFF3A5263293D2007F21D3 /* Assets.xcassets */; };
 		5ADFF3A9263293D2007F21D3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5ADFF3A8263293D2007F21D3 /* Preview Assets.xcassets */; };
 		5ADFF3AC263293D2007F21D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5ADFF3AA263293D2007F21D3 /* LaunchScreen.storyboard */; };
-		5ADFF3B7263293D2007F21D3 /* ChuckNorrisRulesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFF3B6263293D2007F21D3 /* ChuckNorrisRulesTests.swift */; };
 		5ADFF3C2263293D2007F21D3 /* ChuckNorrisRulesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFF3C1263293D2007F21D3 /* ChuckNorrisRulesUITests.swift */; };
 		5ADFF3D32633FE09007F21D3 /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFF3D22633FE09007F21D3 /* NetworkAPI.swift */; };
 		5ADFF3D82633FFA1007F21D3 /* ChuckNorrisClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFF3D72633FFA1007F21D3 /* ChuckNorrisClient.swift */; };
-		5ADFF3DD263411ED007F21D3 /* NetworkAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFF3DC263411ED007F21D3 /* NetworkAPI.swift */; };
 		5ADFF3E4263412F4007F21D3 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFF3E3263412F4007F21D3 /* Store.swift */; };
-		5ADFF3F0263413A5007F21D3 /* Test.json in Resources */ = {isa = PBXBuildFile; fileRef = 5ADFF3EF263413A5007F21D3 /* Test.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,9 +53,14 @@
 		5AA55F8F263434BC003EB652 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		5AA55FA02635893B003EB652 /* Joke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joke.swift; sourceTree = "<group>"; };
 		5AA55FAF26358CCA003EB652 /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
-		5AA55FBD26358DCA003EB652 /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
+		5AA55FBD26358DCA003EB652 /* AppState+Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppState+Store.swift"; sourceTree = "<group>"; };
 		5AA55FC52635AA6E003EB652 /* RequestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestState.swift; sourceTree = "<group>"; };
 		5AA55FCA2635B0A3003EB652 /* StoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTests.swift; sourceTree = "<group>"; };
+		5ABE51D62638025900FE7401 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		5ABE51DC2638028B00FE7401 /* Env.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
+		5ABE51E42638033200FE7401 /* JokeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeCell.swift; sourceTree = "<group>"; };
+		5ABE51E52638033200FE7401 /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		5ABE51EB2638035C00FE7401 /* QuoteReplacement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteReplacement.swift; sourceTree = "<group>"; };
 		5ADFF39C263293D1007F21D3 /* ChuckNorrisRules.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChuckNorrisRules.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ADFF39F263293D1007F21D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5ADFF3A1263293D1007F21D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,16 +70,13 @@
 		5ADFF3AB263293D2007F21D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5ADFF3AD263293D2007F21D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5ADFF3B2263293D2007F21D3 /* ChuckNorrisRulesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChuckNorrisRulesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5ADFF3B6263293D2007F21D3 /* ChuckNorrisRulesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisRulesTests.swift; sourceTree = "<group>"; };
 		5ADFF3B8263293D2007F21D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5ADFF3BD263293D2007F21D3 /* ChuckNorrisRulesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChuckNorrisRulesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ADFF3C1263293D2007F21D3 /* ChuckNorrisRulesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisRulesUITests.swift; sourceTree = "<group>"; };
 		5ADFF3C3263293D2007F21D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5ADFF3D22633FE09007F21D3 /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
 		5ADFF3D72633FFA1007F21D3 /* ChuckNorrisClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChuckNorrisClient.swift; sourceTree = "<group>"; };
-		5ADFF3DC263411ED007F21D3 /* NetworkAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPI.swift; sourceTree = "<group>"; };
 		5ADFF3E3263412F4007F21D3 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
-		5ADFF3EF263413A5007F21D3 /* Test.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Test.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +84,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5AA55F96263446DF003EB652 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,21 +104,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5AA55FAB26358C87003EB652 /* ComposableArchitecture */ = {
+		5AA55FAB26358C87003EB652 /* Store */ = {
 			isa = PBXGroup;
 			children = (
 				5ADFF3E3263412F4007F21D3 /* Store.swift */,
-				5AA55FAF26358CCA003EB652 /* AppAction.swift */,
+				5ABE51DC2638028B00FE7401 /* Env.swift */,
 			);
-			path = ComposableArchitecture;
+			path = Store;
 			sourceTree = "<group>";
 		};
 		5AA55FBC26358D9C003EB652 /* AppState */ = {
 			isa = PBXGroup;
 			children = (
-				5AA55FBD26358DCA003EB652 /* AppStore.swift */,
+				5AA55FAF26358CCA003EB652 /* AppAction.swift */,
+				5AA55FBD26358DCA003EB652 /* AppState+Store.swift */,
 			);
 			path = AppState;
+			sourceTree = "<group>";
+		};
+		5ABE51DB2638025D00FE7401 /* Styling */ = {
+			isa = PBXGroup;
+			children = (
+				5ABE51D62638025900FE7401 /* Color.swift */,
+			);
+			path = Styling;
+			sourceTree = "<group>";
+		};
+		5ABE51F02638036000FE7401 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5ABE51EB2638035C00FE7401 /* QuoteReplacement.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		5ABE51F12638036A00FE7401 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				5AA55F87263433E4003EB652 /* HomeView.swift */,
+				5ADFF3A3263293D1007F21D3 /* JokesView.swift */,
+				5AA55F8F263434BC003EB652 /* FavoritesView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		5ABE51F22638037800FE7401 /* UtilityViews */ = {
+			isa = PBXGroup;
+			children = (
+				5ABE51E52638033200FE7401 /* ErrorView.swift */,
+				5ABE51E42638033200FE7401 /* JokeCell.swift */,
+			);
+			path = UtilityViews;
 			sourceTree = "<group>";
 		};
 		5ADFF393263293D1007F21D3 = {
@@ -142,15 +180,15 @@
 		5ADFF39E263293D1007F21D3 /* ChuckNorrisRules */ = {
 			isa = PBXGroup;
 			children = (
+				5ABE51DB2638025D00FE7401 /* Styling */,
+				5AA55FAB26358C87003EB652 /* Store */,
 				5AA55FBC26358D9C003EB652 /* AppState */,
-				5AA55FAB26358C87003EB652 /* ComposableArchitecture */,
 				5ADFF3E2263412DA007F21D3 /* Models */,
 				5ADFF3E1263412CD007F21D3 /* Network */,
 				5ADFF39F263293D1007F21D3 /* AppDelegate.swift */,
 				5ADFF3A1263293D1007F21D3 /* SceneDelegate.swift */,
-				5AA55F87263433E4003EB652 /* HomeView.swift */,
-				5ADFF3A3263293D1007F21D3 /* JokesView.swift */,
-				5AA55F8F263434BC003EB652 /* FavoritesView.swift */,
+				5ABE51F12638036A00FE7401 /* Screens */,
+				5ABE51F22638037800FE7401 /* UtilityViews */,
 				5ADFF3A5263293D2007F21D3 /* Assets.xcassets */,
 				5ADFF3AA263293D2007F21D3 /* LaunchScreen.storyboard */,
 				5ADFF3AD263293D2007F21D3 /* Info.plist */,
@@ -170,8 +208,6 @@
 		5ADFF3B5263293D2007F21D3 /* ChuckNorrisRulesTests */ = {
 			isa = PBXGroup;
 			children = (
-				5ADFF3EE26341345007F21D3 /* Network */,
-				5ADFF3B6263293D2007F21D3 /* ChuckNorrisRulesTests.swift */,
 				5ADFF3B8263293D2007F21D3 /* Info.plist */,
 				5AA55FCA2635B0A3003EB652 /* StoreTests.swift */,
 			);
@@ -190,9 +226,10 @@
 		5ADFF3E1263412CD007F21D3 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				5AA55FC52635AA6E003EB652 /* RequestState.swift */,
 				5ADFF3D22633FE09007F21D3 /* NetworkAPI.swift */,
 				5ADFF3D72633FFA1007F21D3 /* ChuckNorrisClient.swift */,
-				5AA55FC52635AA6E003EB652 /* RequestState.swift */,
+				5ABE51F02638036000FE7401 /* Helpers */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -203,15 +240,6 @@
 				5AA55FA02635893B003EB652 /* Joke.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		5ADFF3EE26341345007F21D3 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				5ADFF3DC263411ED007F21D3 /* NetworkAPI.swift */,
-				5ADFF3EF263413A5007F21D3 /* Test.json */,
-			);
-			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,7 +259,6 @@
 			);
 			name = ChuckNorrisRules;
 			packageProductDependencies = (
-				5AA55F95263446DF003EB652 /* ComposableArchitecture */,
 			);
 			productName = ChuckNorrisRules;
 			productReference = 5ADFF39C263293D1007F21D3 /* ChuckNorrisRules.app */;
@@ -305,7 +332,6 @@
 			);
 			mainGroup = 5ADFF393263293D1007F21D3;
 			packageReferences = (
-				5AA55F94263446DF003EB652 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 			);
 			productRefGroup = 5ADFF39D263293D1007F21D3 /* Products */;
 			projectDirPath = "";
@@ -333,7 +359,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5ADFF3F0263413A5007F21D3 /* Test.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,16 +378,21 @@
 			files = (
 				5ADFF3D82633FFA1007F21D3 /* ChuckNorrisClient.swift in Sources */,
 				5AA55F88263433E4003EB652 /* HomeView.swift in Sources */,
+				5ABE51EC2638035C00FE7401 /* QuoteReplacement.swift in Sources */,
 				5AA55FC62635AA6E003EB652 /* RequestState.swift in Sources */,
 				5ADFF3A0263293D1007F21D3 /* AppDelegate.swift in Sources */,
-				5AA55FBE26358DCA003EB652 /* AppStore.swift in Sources */,
+				5ABE51D72638025900FE7401 /* Color.swift in Sources */,
+				5AA55FBE26358DCA003EB652 /* AppState+Store.swift in Sources */,
 				5ADFF3A2263293D1007F21D3 /* SceneDelegate.swift in Sources */,
 				5AA55F90263434BC003EB652 /* FavoritesView.swift in Sources */,
 				5AA55FA12635893B003EB652 /* Joke.swift in Sources */,
 				5ADFF3E4263412F4007F21D3 /* Store.swift in Sources */,
 				5AA55FB026358CCA003EB652 /* AppAction.swift in Sources */,
+				5ABE51E62638033200FE7401 /* JokeCell.swift in Sources */,
 				5ADFF3A4263293D1007F21D3 /* JokesView.swift in Sources */,
 				5ADFF3D32633FE09007F21D3 /* NetworkAPI.swift in Sources */,
+				5ABE51DD2638028B00FE7401 /* Env.swift in Sources */,
+				5ABE51E72638033200FE7401 /* ErrorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,8 +400,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5ADFF3B7263293D2007F21D3 /* ChuckNorrisRulesTests.swift in Sources */,
-				5ADFF3DD263411ED007F21D3 /* NetworkAPI.swift in Sources */,
 				5AA55FCB2635B0A3003EB652 /* StoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -687,25 +715,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		5AA55F94263446DF003EB652 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.18.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		5AA55F95263446DF003EB652 /* ComposableArchitecture */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5AA55F94263446DF003EB652 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
-			productName = ComposableArchitecture;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5ADFF394263293D1007F21D3 /* Project object */;
 }

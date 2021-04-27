@@ -16,10 +16,10 @@ struct Response<A: Decodable>: Decodable {
 class NetworkAPI {
     
     static func fetch<A: Decodable>(
-        endpoint: URL,
+        url: URL,
         decodeAs type: A.Type) -> AnyPublisher<A, Error> {
         URLSession.shared
-            .dataTaskPublisher(for: endpoint)
+            .dataTaskPublisher(for: url)
             .map(\.data)
             .decode(type: Response<A>.self, decoder: JSONDecoder())
             .map(\.value)

@@ -16,38 +16,42 @@ struct JokesView: View {
     
     var body: some View {
         switch store.state.requestState {
-        case .notRequested: ProgressView().onAppear {
-            store.send(.refreshTapped)
-        }
-        case .loading: ProgressView().onAppear { store.send(.refreshTapped) }
+        case .notRequested: ProgressView().onAppear { store.send(.refreshTapped(10, [.explicit])) }
+        case .loading: ProgressView()
         case .success(let jokes):
             List(jokes) { joke in
-                Button(action: { showModal.toggle() }) {
-                    if store.state.favorites.contains(joke) {
-                        Text("\(joke.text)").background(Color.gray)
-                    } else {
-                        Text("\(joke.text)")
-                    }
-                }.sheet(isPresented: $showModal) {
-                    AddToFavoritesView(joke: joke, store: store)
+                if store.state.favorites.contains(joke) {
+                    HStack {
+                        JokeCell(joke: joke)
+                        Spacer()
+                        Image(systemName: "hand.thumbsup.fill")
+                        
+                    }.onTapGesture { store.send(.removeFromFavorites(joke)) }
+                } else {
+                    JokeCell(joke: joke).onTapGesture { store.send(.addToFavorites(joke)) }
                 }
             }
-            .asNavigation(store: store, showOptions: $showOptions)
-        case .error: Text("An Error has occured. Please try refreshing the page")
-            .asNavigation(store: store, showOptions: $showOptions)
+            .withNavigation(store: store, showOptions: $showOptions)
+        case .error: ErrorView()
+            .withNavigation(store: store, showOptions: $showOptions)
         }
     }
 }
 
 extension View {
-    func asNavigation(store: Store<AppState>, showOptions: Binding<Bool>) -> some View {
+    func withNavigation(
+        store: Store<AppState>,
+        showOptions: Binding<Bool>) -> some View
+    {
         return self
-            .navigationTitle("Chuck Norris Jokes")
+            .navigationTitle("Chuck Norris Jokes").navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 HStack {
-                    Button("Refresh") {
-                        store.send(.refreshTapped)
+                    Image(systemName: "arrow.clockwise").onTapGesture {
+                        store.send(.refreshTapped(store.state.fetchQuantity, [.explicit]))
                     }
+//                    Button("Refresh") {
+//                    }
                     Button(action: { showOptions.wrappedValue.toggle() }) {
                         Text("Options")
                     }.sheet(isPresented: showOptions) {
@@ -95,6 +99,3 @@ struct ContentView_Previews: PreviewProvider {
         JokesView(store: Store(initialState: .init()))
     }
 }
-
-
-

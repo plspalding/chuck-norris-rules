@@ -1,7 +1,0 @@
-{
-    "type": "success",
-    "value": [
-        { "id": 0, "title": "Title One", "text": "Text one" },
-        { "id": 1, "title": "Title Two", "text": "Text two" }
-    ]
-}

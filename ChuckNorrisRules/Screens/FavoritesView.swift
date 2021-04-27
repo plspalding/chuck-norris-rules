@@ -12,8 +12,11 @@ struct FavoritesView: View {
     @ObservedObject var store: Store<AppState>
     
     var body: some View {
-        List(store.state.favorites) { joke in
-            Text(joke.text)
-        }.navigationTitle("Favorites")
+        List {
+            ForEach(store.state.favorites) {
+                JokeCell(joke: $0)
+            }.onDelete(perform: { store.send(.removeFromFavoritesUsingIndexPath($0)) })
+        }
+        .navigationTitle("Favorites")
     }
 }

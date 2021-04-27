@@ -9,17 +9,30 @@ import XCTest
 import Combine
 @testable import ChuckNorrisRules
 
+class MockChuckNorrisClient: ChuckNorrisClientProtocol {
+    
+    var response: [Joke]
+    
+    init(response: [Joke] = []) {
+        self.response = response
+    }
+    
+    func fetch(endPoint: Endpoint) -> AnyPublisher<[Joke], Error> {
+        return Just(response).setFailureType(to: Error.self).eraseToAnyPublisher()
+    }
+}
+
 final class StoreTests: XCTestCase {
     
     private var cancellables = Set<AnyCancellable>()
-    private var store: Store<AppState> = .init(initialState: .init())
+    private var store: Store<AppState>!
     
     override func setUp() {
-        store = initialState
+        store = mock(response: [])
     }
     
     override func tearDown() {
-        store = initialState
+        store = nil
     }
     
     func test_initialStateOfApp_isInNotRequestedState() {
@@ -31,31 +44,21 @@ final class StoreTests: XCTestCase {
         .store(in: &cancellables)
     }
     
-    func test_requestStateIsLoading_afterLoadingAction() {
-        store.send(.loading)
-        store.$state.sink(
-            receiveCompletion: assertFailed,
-            receiveValue: {
-                XCTAssertEqual($0.requestState, .loading)
-            })
-        .store(in: &cancellables)
-    }
-    
     func test_requestStateReceivedLoadingFollowedBySuccess_afterRefreshTappedAction() {
-        // TODO: Need to inject dummy network layer into Store so that the fetch returns data I am expecting.
         let expected = ExpectedValues<RequestState<Joke>>(
-            inOrder: .loading, .success([])
+            inOrder: .notRequested, .notRequested, .loading, .success([])
         )
-        store.send(.refreshTapped)
         let exp = expectation(description: "Should enter loading state followed by success state")
         store.$state.sink(
             receiveCompletion: assertFailed,
             receiveValue: {
+                print("Debug: \($0)")
                 expected.run(with: $0.requestState) {
                     exp.fulfill()
                 }
             }).store(in: &cancellables)
-        wait(for: [exp], timeout: 0.5)
+        store.send(.refreshTapped(-1, []))
+        wait(for: [exp], timeout: 0.2)
     }
     
     func test_addToFavoritesArrayContainsJoke_whenAddToFavoritesIsSent() {
@@ -88,6 +91,18 @@ final class StoreTests: XCTestCase {
             XCTAssertTrue($0.favorites.contains(j2))
         }.store(in: &cancellables)
     }
+    
+    func test_removeJoke_whenRemoveFromFavoritesUsingIndexSetSent() {
+        let j1 = Joke.init(id: 0, text: "Chuck Norris")
+        let j2 = Joke(id: 1, text: "Chuck Norris jokes again")
+        store.send(.addToFavorites(j1))
+        store.send(.addToFavorites(j2))
+        store.send(.removeFromFavoritesUsingIndexPath(.init(arrayLiteral: 0)))
+        store.$state.sink {
+            XCTAssertFalse($0.favorites.contains(j1))
+            XCTAssertTrue($0.favorites.contains(j2))
+        }.store(in: &cancellables)
+    }
 }
 
 class ExpectedValues<Value: Equatable> {
@@ -109,8 +124,14 @@ class ExpectedValues<Value: Equatable> {
 }
 
 // Helpers
-var initialState: Store<AppState> = Store<AppState>.init(initialState: .init())
-
 var assertFailed: (Any) -> () {
     { _ in XCTFail() }
+}
+
+func mock(response: [Joke]) -> Store<AppState> {
+    let chuckNorrisClient = MockChuckNorrisClient(response: response)
+    return Store(
+        initialState: AppState(jokes: [], fetchQuantity: 0, favorites: [], requestState: .notRequested),
+        env: Env(chuckNorrisClient: chuckNorrisClient)
+    )
 }

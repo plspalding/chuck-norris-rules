@@ -8,33 +8,54 @@
 import Foundation
 import Combine
 
-struct ChuckNorrisClient {
+protocol ChuckNorrisClientProtocol {
+    func fetch(endPoint: Endpoint) -> AnyPublisher<[Joke], Error>
+}
+
+enum Endpoint {
+    case randomJokes(numberOfJokes: Int, excludeCategories: [Joke.Category])
+}
+
+final class ChuckNorrisClient: ChuckNorrisClientProtocol {
+    
+    private var cancellables = Set<AnyCancellable>()
     private let baseURL = "https://api.icndb.com"
-    private let endpoint = "jokes/random/"
-    private let exclude: [Categories]  = [.explicit]
+}
+
+extension ChuckNorrisClient {
     
-    var url: String! {
-        baseURL.appending("/").appending(endpoint)
-    }
-    
-    func request(numberOfJokes: Int) -> URL {
-        var comp = URLComponents(string: url + "/\(numberOfJokes)")!
-        comp.queryItems = [
-            URLQueryItem(
-                name: "exclude",
-                value: "[" + exclude.joined(separator: ",") + "]")
-        ]
-        return comp.url!
+    func fetch(endPoint: Endpoint) -> AnyPublisher<[Joke], Error> {
+        
+        switch endPoint {
+        case .randomJokes:
+
+            return NetworkAPI.fetch(
+                url: URL(string: baseURL + endPoint.components.string!)!,
+                decodeAs: [Joke].self
+            ).map { $0.map(replaceQuotes(in:)) }
+            .eraseToAnyPublisher()
+        }
     }
 }
 
-private extension Array where Element == Categories {
-    func joined(separator: String) -> String {
-        var x: String = ""
-        for elem in self {
-            x.append(",")
-            x.append(elem.rawValue)
+extension Endpoint {
+    var path: String {
+        switch self {
+        case .randomJokes:
+            return "/jokes/random"
         }
-        return x
+    }
+}
+
+extension Endpoint {
+    var components: URLComponents {
+        switch self {
+        case let .randomJokes(numberOfJokes, exclude):
+            var comp = URLComponents(string: path + "/\(numberOfJokes)")!
+            comp.queryItems = [
+                URLQueryItem(name: "exclude", value: "[" + exclude.joined(separator: ",") + "]")
+            ]
+            return comp
+        }
     }
 }

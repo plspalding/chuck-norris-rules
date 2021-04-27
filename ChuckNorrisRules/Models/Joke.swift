@@ -8,6 +8,12 @@
 import Foundation
 
 struct Joke: Decodable, Equatable, Identifiable {
+    
+    enum Category: String {
+        case explicit
+        case nerdy
+    }
+    
     let id: Int
     let text: String
 }
@@ -19,7 +25,13 @@ private extension Joke {
     }
 }
 
-enum Categories: String {
-    case explicit
-    case nerdy
+extension Array where Element == Joke.Category {
+    func joined(separator: String) -> String {
+        var x: String = ""
+        for elem in self {
+            x.append(",")
+            x.append(elem.rawValue)
+        }
+        return x
+    }
 }
