@@ -1,5 +1,7 @@
 # Chuck Norris Rules
 
+Project targets 14.1+. 14.0 was not available in Project settings.
+
 The project has been developed with a unidirectional flow pattern based off https://github.com/pointfreeco/swift-composable-architecture. All app actions are in one enum. This is ok for a small application. However if the app was to continue growing, then a need would arise to separate the actions by grouping certain actions together. This could be achieved with modifications to current code. However it would be more advisable to use the library linked earlier. This decision was taken as importing a third party library for a small app with limited functionality seemed like overkill, yet still allowing us to switch over quickly should it be necessary.
 
 ### How to use the app
