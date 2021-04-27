@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct Options: View {
-    
     var body: some View {
         mediumGrayTextView("Coming soon:").font(.largeTitle)
         mediumGrayTextView("1. Update number of jokes returned by request")

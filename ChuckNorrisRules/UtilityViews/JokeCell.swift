@@ -12,7 +12,9 @@ struct JokeCell: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Joke: \(joke.id)").foregroundColor(Color.darkGray).font(.headline)
+            Text("Joke: \(joke.id)")
+                .foregroundColor(Color.darkGray)
+                .font(.headline)
             Text("\(joke.text)")
                 .foregroundColor(Color.mediumGray)
                 .font(.callout)

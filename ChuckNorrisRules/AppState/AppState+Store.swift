@@ -58,7 +58,7 @@ extension Store where State == AppState {
     private func fetch(quantity: Int, categories: [Joke.Category]) -> Effect<AppAction> {
         return { [weak self] action in
             guard let self = self else { return }
-            self.Current.chuckNorrisClient.fetch(endPoint: .randomJokes(numberOfJokes: quantity, excludeCategories: categories)).sink(
+            self.Current.chuckNorrisClient.fetch(endPoint: .randomJokes(quantity: quantity, excludeCategories: categories)).sink(
                 receiveCompletion: {
                     switch $0 {
                     case .failure(_): action(.networkError)

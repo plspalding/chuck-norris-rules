@@ -13,7 +13,7 @@ protocol ChuckNorrisClientProtocol {
 }
 
 enum Endpoint {
-    case randomJokes(numberOfJokes: Int, excludeCategories: [Joke.Category])
+    case randomJokes(quantity: Int, excludeCategories: [Joke.Category])
 }
 
 final class ChuckNorrisClient: ChuckNorrisClientProtocol {
@@ -24,7 +24,9 @@ final class ChuckNorrisClient: ChuckNorrisClientProtocol {
 
 extension ChuckNorrisClient {
     func fetch(endPoint: Endpoint) -> AnyPublisher<[Joke], Error> {
-        guard let path = endPoint.components.string, let url = URL(string: baseURL + path) else {
+        guard let path = endPoint.components.string,
+              let url = URL(string: baseURL + path)
+        else {
             fatalError("Badly formed url request")
         }
         return NetworkAPI.fetch(
@@ -47,12 +49,16 @@ private extension Endpoint {
 private extension Endpoint {
     var components: URLComponents {
         switch self {
-        case let .randomJokes(numberOfJokes, exclude):
-            var comp = URLComponents(string: path + "/\(numberOfJokes)")!
-            comp.queryItems = [
-                URLQueryItem(name: "exclude", value: "[" + exclude.joined(separator: ",") + "]")
-            ]
-            return comp
+        case let .randomJokes(quantity, categories):
+           return randomJokesComponents(quantity: quantity, excludeCategories: categories)
         }
+    }
+    
+    func randomJokesComponents(quantity: Int, excludeCategories categories: [Joke.Category]) -> URLComponents {
+        var comp = URLComponents(string: path + "/\(quantity)")!
+        comp.queryItems = [
+            URLQueryItem(name: "exclude", value: "[" + categories.joined(separator: ",") + "]")
+        ]
+        return comp
     }
 }

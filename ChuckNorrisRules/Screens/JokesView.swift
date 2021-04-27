@@ -59,7 +59,6 @@ extension View {
 }
 
 struct AddToFavoritesView: View {
-    
     @Environment(\.presentationMode) var presentationMode
     
     var joke: Joke
@@ -71,7 +70,7 @@ struct AddToFavoritesView: View {
             if store.state.favorites.contains(where: { $0 == joke }) {
                 Button("Remove") {
                     store.send(.removeFromFavorites(joke))
-                    presentationMode.wrappedValue.dismiss() // TODO: Can this be moved so only called once
+                    presentationMode.wrappedValue.dismiss()
                 }
             } else {
                 Button("Add") {
