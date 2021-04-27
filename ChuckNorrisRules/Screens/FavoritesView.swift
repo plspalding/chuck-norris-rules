@@ -16,6 +16,6 @@ struct FavoritesView: View {
                 JokeCell(joke: $0)
             }.onDelete(perform: { store.send(.removeFromFavoritesUsingIndexPath($0)) })
         }
-        .navigationTitle("Favorites")
+        .navigationTitle("Favourites")
     }
 }
