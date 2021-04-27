@@ -11,14 +11,19 @@ import Combine
 
 class MockChuckNorrisClient: ChuckNorrisClientProtocol {
     
-    var response: [Joke]
+    var result: Result<[Joke], Error>
     
-    init(response: [Joke] = []) {
-        self.response = response
+    init(response: Result<[Joke], Error> = .success([])) {
+        self.result = response
     }
     
     func fetch(endPoint: Endpoint) -> AnyPublisher<[Joke], Error> {
-        return Just(response).setFailureType(to: Error.self).eraseToAnyPublisher()
+        switch result {
+        case .success(let joke):
+            return Just(joke).setFailureType(to: Error.self).eraseToAnyPublisher()
+        case .failure(let error):
+            return Fail(error: error).eraseToAnyPublisher()
+        }
     }
 }
 
@@ -28,7 +33,7 @@ final class StoreTests: XCTestCase {
     private var store: Store<AppState>!
     
     override func setUp() {
-        store = mock(response: [])
+        store = mock(result: .success([]))
     }
     
     override func tearDown() {
@@ -103,6 +108,15 @@ final class StoreTests: XCTestCase {
             XCTAssertTrue($0.favorites.contains(j2))
         }.store(in: &cancellables)
     }
+    
+    func test_errorRecevied_whenErrorReturnedFromServer() {
+        enum TestError: Error { case test }
+        let store = mock(result: .failure(TestError.test))
+        store.send(.refreshTapped(-1, []))
+        store.$state.sink {
+            XCTAssertEqual($0.requestState, .error)
+        }.store(in: &cancellables)
+    }
 }
 
 class ExpectedValues<Value: Equatable> {
@@ -128,8 +142,8 @@ var assertFailed: (Any) -> () {
     { _ in XCTFail() }
 }
 
-func mock(response: [Joke]) -> Store<AppState> {
-    let chuckNorrisClient = MockChuckNorrisClient(response: response)
+func mock(result: Result<[Joke], Error>) -> Store<AppState> {
+    let chuckNorrisClient = MockChuckNorrisClient(response: result)
     return Store(
         initialState: AppState(jokes: [], fetchQuantity: 0, favorites: [], requestState: .notRequested),
         env: Env(chuckNorrisClient: chuckNorrisClient)

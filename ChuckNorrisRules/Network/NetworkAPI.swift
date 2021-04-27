@@ -14,7 +14,6 @@ struct Response<A: Decodable>: Decodable {
 }
 
 class NetworkAPI {
-    
     static func fetch<A: Decodable>(
         url: URL,
         decodeAs type: A.Type) -> AnyPublisher<A, Error> {

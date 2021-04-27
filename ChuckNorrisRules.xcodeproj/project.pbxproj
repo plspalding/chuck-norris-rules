@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A8EEA3C263816A2001B5835 /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8EEA3B263816A2001B5835 /* OptionsView.swift */; };
 		5AA55F88263433E4003EB652 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA55F87263433E4003EB652 /* HomeView.swift */; };
 		5AA55F90263434BC003EB652 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA55F8F263434BC003EB652 /* FavoritesView.swift */; };
 		5AA55FA12635893B003EB652 /* Joke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA55FA02635893B003EB652 /* Joke.swift */; };
@@ -19,6 +20,7 @@
 		5ABE51E62638033200FE7401 /* JokeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABE51E42638033200FE7401 /* JokeCell.swift */; };
 		5ABE51E72638033200FE7401 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABE51E52638033200FE7401 /* ErrorView.swift */; };
 		5ABE51EC2638035C00FE7401 /* QuoteReplacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABE51EB2638035C00FE7401 /* QuoteReplacement.swift */; };
+		5ABE521526380F6600FE7401 /* StandardButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABE521426380F6600FE7401 /* StandardButton.swift */; };
 		5ADFF3A0263293D1007F21D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFF39F263293D1007F21D3 /* AppDelegate.swift */; };
 		5ADFF3A2263293D1007F21D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFF3A1263293D1007F21D3 /* SceneDelegate.swift */; };
 		5ADFF3A4263293D1007F21D3 /* JokesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ADFF3A3263293D1007F21D3 /* JokesView.swift */; };
@@ -49,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A8EEA3B263816A2001B5835 /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
 		5AA55F87263433E4003EB652 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		5AA55F8F263434BC003EB652 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 		5AA55FA02635893B003EB652 /* Joke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Joke.swift; sourceTree = "<group>"; };
@@ -61,6 +64,7 @@
 		5ABE51E42638033200FE7401 /* JokeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JokeCell.swift; sourceTree = "<group>"; };
 		5ABE51E52638033200FE7401 /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		5ABE51EB2638035C00FE7401 /* QuoteReplacement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteReplacement.swift; sourceTree = "<group>"; };
+		5ABE521426380F6600FE7401 /* StandardButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardButton.swift; sourceTree = "<group>"; };
 		5ADFF39C263293D1007F21D3 /* ChuckNorrisRules.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChuckNorrisRules.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5ADFF39F263293D1007F21D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5ADFF3A1263293D1007F21D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -151,8 +155,10 @@
 		5ABE51F22638037800FE7401 /* UtilityViews */ = {
 			isa = PBXGroup;
 			children = (
+				5A8EEA3B263816A2001B5835 /* OptionsView.swift */,
 				5ABE51E52638033200FE7401 /* ErrorView.swift */,
 				5ABE51E42638033200FE7401 /* JokeCell.swift */,
+				5ABE521426380F6600FE7401 /* StandardButton.swift */,
 			);
 			path = UtilityViews;
 			sourceTree = "<group>";
@@ -378,6 +384,7 @@
 			files = (
 				5ADFF3D82633FFA1007F21D3 /* ChuckNorrisClient.swift in Sources */,
 				5AA55F88263433E4003EB652 /* HomeView.swift in Sources */,
+				5ABE521526380F6600FE7401 /* StandardButton.swift in Sources */,
 				5ABE51EC2638035C00FE7401 /* QuoteReplacement.swift in Sources */,
 				5AA55FC62635AA6E003EB652 /* RequestState.swift in Sources */,
 				5ADFF3A0263293D1007F21D3 /* AppDelegate.swift in Sources */,
@@ -387,6 +394,7 @@
 				5AA55F90263434BC003EB652 /* FavoritesView.swift in Sources */,
 				5AA55FA12635893B003EB652 /* Joke.swift in Sources */,
 				5ADFF3E4263412F4007F21D3 /* Store.swift in Sources */,
+				5A8EEA3C263816A2001B5835 /* OptionsView.swift in Sources */,
 				5AA55FB026358CCA003EB652 /* AppAction.swift in Sources */,
 				5ABE51E62638033200FE7401 /* JokeCell.swift in Sources */,
 				5ADFF3A4263293D1007F21D3 /* JokesView.swift in Sources */,

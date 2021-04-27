@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct FavoritesView: View {
-    
     @ObservedObject var store: Store<AppState>
     
     var body: some View {

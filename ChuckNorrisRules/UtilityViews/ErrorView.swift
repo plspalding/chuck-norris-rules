@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ErrorView: View {
-    
     var body: some View {
         Text("An Error has occured.\nPlease try refreshing the page")
             .multilineTextAlignment(.center)

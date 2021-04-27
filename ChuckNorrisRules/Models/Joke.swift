@@ -8,7 +8,6 @@
 import Foundation
 
 struct Joke: Decodable, Equatable, Identifiable {
-    
     enum Category: String {
         case explicit
         case nerdy

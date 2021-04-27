@@ -23,11 +23,9 @@ final class Store<State>: ObservableObject {
 }
 
 extension Store where State == AppState {
-    
     func send(_ action: AppAction) {
         let effects = reducer(state: &state, action: action)
         effects.forEach {
-            print("Debug: Perform effect")
             $0 { action in self.send(action) }
         }
     }

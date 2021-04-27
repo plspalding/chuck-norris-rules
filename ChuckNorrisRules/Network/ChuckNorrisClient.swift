@@ -23,22 +23,19 @@ final class ChuckNorrisClient: ChuckNorrisClientProtocol {
 }
 
 extension ChuckNorrisClient {
-    
     func fetch(endPoint: Endpoint) -> AnyPublisher<[Joke], Error> {
-        
-        switch endPoint {
-        case .randomJokes:
-
-            return NetworkAPI.fetch(
-                url: URL(string: baseURL + endPoint.components.string!)!,
-                decodeAs: [Joke].self
-            ).map { $0.map(replaceQuotes(in:)) }
-            .eraseToAnyPublisher()
+        guard let path = endPoint.components.string, let url = URL(string: baseURL + path) else {
+            fatalError("Badly formed url request")
         }
+        return NetworkAPI.fetch(
+            url: url,
+            decodeAs: [Joke].self
+        ).map { $0.map(replaceQuotes(in:)) }
+        .eraseToAnyPublisher()
     }
 }
 
-extension Endpoint {
+private extension Endpoint {
     var path: String {
         switch self {
         case .randomJokes:
@@ -47,7 +44,7 @@ extension Endpoint {
     }
 }
 
-extension Endpoint {
+private extension Endpoint {
     var components: URLComponents {
         switch self {
         case let .randomJokes(numberOfJokes, exclude):

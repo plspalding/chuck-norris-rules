@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct JokeCell: View {
-    
     let joke: Joke
     
     var body: some View {

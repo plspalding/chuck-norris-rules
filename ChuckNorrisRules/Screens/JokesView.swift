@@ -9,7 +9,6 @@ import SwiftUI
 import Combine
 
 struct JokesView: View {
-    
     @ObservedObject var store: Store<AppState>
     @State var showModal = false
     @State var showOptions = false
@@ -25,7 +24,6 @@ struct JokesView: View {
                         JokeCell(joke: joke)
                         Spacer()
                         Image(systemName: "hand.thumbsup.fill")
-                        
                     }.onTapGesture { store.send(.removeFromFavorites(joke)) }
                 } else {
                     JokeCell(joke: joke).onTapGesture { store.send(.addToFavorites(joke)) }
@@ -48,10 +46,8 @@ extension View {
             .toolbar {
                 HStack {
                     Image(systemName: "arrow.clockwise").onTapGesture {
-                        store.send(.refreshTapped(store.state.fetchQuantity, [.explicit]))
+                        store.send(.refreshTapped(store.state.fetchQuantity, [.explicit])) // TODO: Option screen will allow users to select excluding categories
                     }
-//                    Button("Refresh") {
-//                    }
                     Button(action: { showOptions.wrappedValue.toggle() }) {
                         Text("Options")
                     }.sheet(isPresented: showOptions) {
@@ -59,13 +55,6 @@ extension View {
                     }
                 }
             }
-    }
-}
-
-struct Options: View {
-    
-    var body: some View {
-        Text("Options for selecting the number of jokes received and what to exclude")
     }
 }
 

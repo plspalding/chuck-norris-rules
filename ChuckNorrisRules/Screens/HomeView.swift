@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HomeView: View {
-        
     @ObservedObject var store: Store<AppState>
     
     var body: some View {
@@ -22,22 +21,16 @@ struct HomeView: View {
                     Image("Chuck-Norris-featured-Image")
                     Spacer()
                     NavigationLink(destination: JokesView(store: store)) {
-                        Text("Why so serious?")
-                                    .padding(10)
-                                    .background(Color.green)
-                                    .foregroundColor(Color.white)
-                                    .cornerRadius(10)
+                        StandardButton(title: "Why so serious?", color: .darkGray)
                     }
                     NavigationLink(destination: FavoritesView(store: store)) {
-                        Text("Favourites")
-                            .padding(10)
-                            .background(Color.green)
-                            .foregroundColor(Color.white)
-                            .cornerRadius(10)
+                        StandardButton(title: "Favourites", color: .darkGray)
                     }
                     Spacer()
                 }
-            }.navigationBarHidden(true)
+            }
+            .navigationBarHidden(true)
+            .ignoresSafeArea()
         }
     }
 }
